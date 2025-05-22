@@ -148,7 +148,7 @@ const PredictionForm: React.FC<PredictionFormProps> = ({ onPredict }) => {
             { value: 5, label: 'Восточный округ' },
             { value: 6, label: 'Зеленоградский округ' },
             { value: 7, label: 'Новомосковский округ' },
-            { value: 8, label: 'Северный округ' },
+            { value: 8, label: 'Троицкий округ' },
           ]}
         />
       </Form.Item>

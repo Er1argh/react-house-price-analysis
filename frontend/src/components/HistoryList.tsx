@@ -20,7 +20,16 @@ const HistoryList: React.FC = () => {
   };
 
   const getDistrictName = (code: number) => {
-    const districts = ['Центральный', 'Северный', 'Южный', 'Западный', 'Восточный', 'Зеленоградский', 'Новомосковский'];
+    const districts = [
+      'Центральный',
+      'Северный',
+      'Южный',
+      'Западный',
+      'Восточный',
+      'Зеленоградский',
+      'Новомосковский',
+      'Троицкий округ',
+    ];
 
     return districts[code - 1] || 'Неизвестный округ';
   };
@@ -117,7 +126,7 @@ const HistoryList: React.FC = () => {
             <Descriptions.Item label="Площадь кухни">{selectedRecord.params.kitsp} м²</Descriptions.Item>
             <Descriptions.Item label="Расстояние от центра">{selectedRecord.params.dist} км</Descriptions.Item>
             <Descriptions.Item label="Расстояние до метро">{selectedRecord.params.metrdist} мин</Descriptions.Item>
-            <Descriptions.Item label="Пешая доступность">{selectedRecord.params.walk ? 'Да' : 'Нет'}</Descriptions.Item>
+            <Descriptions.Item label="Пешая доступность">{selectedRecord.params.walk ? 'Нет' : 'Да'}</Descriptions.Item>
             <Descriptions.Item label="Тип дома">
               {selectedRecord.params.brick ? 'Кирпичный' : 'Панельный'}
             </Descriptions.Item>

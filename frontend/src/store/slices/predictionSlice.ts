@@ -32,7 +32,36 @@ export const predictionSlice = createSlice({
   initialState,
   reducers: {
     updateParams: (state, action: PayloadAction<Partial<PredictionParams>>) => {
-      state.params = { ...state.params, ...action.payload };
+      const newParams = { ...state.params, ...action.payload };
+
+      if (newParams.totsp !== undefined) {
+        if (newParams.livesp !== null && newParams.livesp > newParams.totsp!) {
+          newParams.livesp = null;
+        }
+        if (newParams.kitsp !== null && newParams.kitsp > newParams.totsp!) {
+          newParams.kitsp = null;
+        }
+      }
+
+      if (newParams.livesp !== undefined) {
+        if (newParams.totsp !== null && newParams.livesp! > newParams.totsp) {
+          newParams.livesp = null;
+        }
+        if (newParams.kitsp !== null && newParams.kitsp > newParams.livesp!) {
+          newParams.kitsp = null;
+        }
+      }
+
+      if (newParams.kitsp !== undefined) {
+        if (
+          (newParams.totsp !== null && newParams.kitsp! > newParams.totsp) ||
+          (newParams.livesp !== null && newParams.kitsp! > newParams.livesp)
+        ) {
+          newParams.kitsp = null;
+        }
+      }
+
+      state.params = newParams as PredictionParams;
     },
     setResult: (state, action: PayloadAction<number>) => {
       state.result = action.payload;
